@@ -30,7 +30,7 @@ build_bin :
 	@mkdir -p binaries/
 
 build_lib :
-	@make >/dev/null -s -C mlx
+	@make -s -C mlx
 	@make -C Libft
 
 clean :

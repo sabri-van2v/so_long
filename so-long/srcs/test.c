@@ -28,19 +28,37 @@ int main()
 
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	int       a = 200;
-	int        b = 200 + (3.14 * 100 - 1);
-	while (b < 200 + (3.14 * 100))
+	int	x = 200;
+	int	y = 200;
+	int	cos = 100;
+	int sin = 0;
+	int	c = 3.14 * 200;
+	while (c > 0)
 	{
-		if (a >= 200 && (b > 200 && b < 200 + (3.14 * 100)))
-			my_mlx_pixel_put(&img, b-- , a++ , 0x00FF0000);
-		else if ((a > 200 && a < 200 + (3.14 * 100)) && (b <= 200))
-			my_mlx_pixel_put(&img, b-- , a-- , 0x00FF0000);
-		else if (a <= 200 && (b <= 200))
-			my_mlx_pixel_put(&img, b++ , a-- , 0x00FF0000);
-		else if (a <= 200 && (b > 200 && b <= 200 + (3.14 * 100) + 1))
-			my_mlx_pixel_put(&img, b++ , a++ , 0x00FF0000);
+		my_mlx_pixel_put(&img, x + cos, y + sin, 0x00FF0000);
+		if ((cos >= 0 && cos <= 100) && (sin >= 0 && sin <= 100))
+		{
+			cos--;
+			sin++;
+		}
+		else if ((cos >= -100 && cos <= 0) && (sin >= 0 && sin <= 100))
+		{
+			cos--;
+			sin--;
+		}
+		else if ((cos >= -100 && cos <= 0) && (sin >= -100 && sin <= 0))
+		{
+			cos++;
+			sin--;
+		}
+		else if ((cos >= 0 && cos <= 100) && (sin >= -100 && sin <= 0))
+		{
+			cos++;
+			sin++;
+		}
+		c--;
 	}
+	my_mlx_pixel_put(&img, x, y, 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_windows, img.img, 0, 0);
 	  mlx_loop(mlx);
 }

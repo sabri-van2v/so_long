@@ -18,20 +18,22 @@ RM = rm -f
 
 MAKEFLAGS += --no-print-directory 
 
-binaries/%.o : srcs/%.c ${HEADERS} build_lib | build_bin
-	${CC} ${CFLAGS} -I./mlx -I./includes -I./Libft/includes/libc -c $< -o $@ 
+binaries/%.o : srcs/%.c ${HEADERS} mlx/libmlx.a Libft/libft.a | binaries
+	${CC} ${CFLAGS} -I./mlx -I./includes -I./Libft/includes/libc -c $< -o $@
 
 ${NAME} : ${OBJS}
 	${CC} ${OBJS} -LLibft -lft -Lmlx -lmlx -lX11 -lXext -o ${NAME}
 
 all : ${NAME}
 
-build_bin :
+binaries :
 	@mkdir -p binaries/
 
-build_lib :
-	@make -s -C mlx
+Libft/libft.a :
 	@make -C Libft
+
+mlx/libmlx.a :
+	@make -C mlx
 
 clean :
 	${RM} -r binaries/

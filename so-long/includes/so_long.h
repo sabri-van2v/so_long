@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/11 04:53:35 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:38:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SO_LONG_H
 
 # include "libft.h"
-# include "mlx.h"
-# include <stdio.h>
+#include "mlx.h"
+#include <X11/keysym.h>
+#include <X11/X.h>
 
 #endif

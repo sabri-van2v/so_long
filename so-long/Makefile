@@ -22,7 +22,7 @@ binaries/%.o : srcs/%.c ${HEADERS} mlx/libmlx.a Libft/libft.a | binaries
 	${CC} ${CFLAGS} -I./mlx -I./includes -I./Libft/includes/libc -c $< -o $@
 
 ${NAME} : ${OBJS}
-	${CC} ${OBJS} -LLibft -lft -Lmlx -lmlx -lX11 -lXext -o ${NAME}
+	${CC} ${OBJS} -LLibft -lft -Lmlx -lmlx -lX11 -lXext -lm -o ${NAME}
 
 all : ${NAME}
 

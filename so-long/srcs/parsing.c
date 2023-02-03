@@ -20,26 +20,6 @@ void	check_walls(char *str, t_flags *flags)
 	flags->walls = 1;
 }
 
-void	check_walls(char *str, t_flags *flags)
-{
-	int	i;
-	int	line_size;
-
-	i = -1;
-	flags->walls = 0;
-	while (str[++i] != '\n' && str[i])
-		if (str[i] != '1')
-			error_parsing(str);
-	line_size = i;
-	while (str[++i + line_size + 1])
-		if (str[i] == '\n' && (str[i - 1] != '1' || str[i + 1] != '1'))
-			error_parsing(str);
-	while (str[++i] != '\n' && str[i])
-		if (str[i] != '1')
-			error_parsing(str);
-	flags->walls = 1;
-}
-
 void	check_form(char *str, t_flags *flags, t_dimensions *size)
 {
 	int	i;
@@ -79,7 +59,7 @@ void	check_chars(char *str, t_flags *flags)
 	flags->exit = 0;
 	while (str[i])
 	{
-		if (str[i] == '0' || str[i] == '1' || str[i] == '\n')
+		if (str[i] == '0' || str[i] == '1' || str[i] == 'N' || str[i] == '\n')
 			;
 		else if (str[i] == 'P')
 		{
@@ -89,7 +69,7 @@ void	check_chars(char *str, t_flags *flags)
 		else if (str[i] == 'C')
 			flags->collector++;
 		else if (str[i] == 'E')
-			flags->collector++;
+			flags->exit++;
 		else
 			error_parsing(str);
 		i++;
@@ -107,6 +87,6 @@ t_dimensions	parsing(char *str)
 		error_parsing(str);
 	check_form(str, &flags, &size);
 	check_walls(str, &flags);
-	check_path(str, &flags, size);
+	check_path(str, flags, size);
 	return (size);
 }

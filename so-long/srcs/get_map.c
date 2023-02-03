@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	read_map(int fd, char *str)
+char	*read_map(int fd, char *str)
 {
 	char	*tmp;
 	char	*reader;
@@ -15,7 +15,7 @@ void	read_map(int fd, char *str)
 	{
 		free(reader);
 		reader = get_next_line(fd);
-		if (!reader)
+		if (!reader || reader[0] == '\n')
 			break ;
 		str = ft_strjoin(tmp, reader);
 		if (!str)
@@ -23,7 +23,7 @@ void	read_map(int fd, char *str)
 		free(tmp);
 		tmp = str;
 	}
-	free(tmp);
+	free(reader);
 	return (str);
 }
 

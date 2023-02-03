@@ -1,10 +1,13 @@
-SRC = test.c
+SRC = main.c get_map.c parsing.c check_path.c error.c
 
 SRCS = ${addprefix srcs/, ${SRC}}
 
 OBJ = ${addprefix binaries/, ${SRC}}
 
 OBJS = ${OBJ:%.c=%.o}
+
+INCLUDES = -I./Libft/includes/libc -I./Libft/includes/ptf \
+			-I./Libft/includes/gnl
 
 HEADERS = includes/so_long.h
 
@@ -19,7 +22,7 @@ RM = rm -f
 MAKEFLAGS += --no-print-directory 
 
 binaries/%.o : srcs/%.c ${HEADERS} mlx/libmlx.a Libft/libft.a | binaries
-	${CC} ${CFLAGS} -I./mlx -I./includes -I./Libft/includes/libc -c $< -o $@
+	${CC} ${CFLAGS} -I./mlx -I./includes ${INCLUDES} -c $< -o $@
 
 ${NAME} : ${OBJS}
 	${CC} ${OBJS} -LLibft -lft -Lmlx -lmlx -lX11 -lXext -lm -o ${NAME}

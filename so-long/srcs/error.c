@@ -7,7 +7,7 @@ void	error_get_map(int fd, char *str1, char *str2)
 		free(str1);
 	if (str2)
 		free(str2);
-	printf("Error\n");
+	printf("Error m\n");
 	exit(1);
 }
 
@@ -15,6 +15,6 @@ void	error_parsing(char *str)
 {
 	if (str)
 		free(str);
-	printf("Error\n");
+	printf("Error p\n");
 	exit(1);
 }

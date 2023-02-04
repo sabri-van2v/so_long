@@ -10,8 +10,8 @@ int	no_collector(char *str, t_dimensions size)
 		if (str[i] == 'C')
 			return (1);
 		if (str[i] == 'E')
-			if (str[i + 1] != '2' || str[i - 1] != '2'
-				|| str[i + size.width] != 2 || str[i + size.width] != '2')
+			if (str[i + 1] != '2' && str[i - 1] != '2'
+				&& str[i + size.width + 1] != 2 && str[i + size.width - 1] != '2')
 				return (1);
 		i++;
 	}
@@ -84,16 +84,13 @@ void	path_back_tracking(char **str, t_flags flags, t_dimensions size)
 			|| (*str)[stock - size.width - 1] == 'C' || (*str)[stock - size.width - 1] == 'N')
 			(player_explores(str, &flags, size, 'a'), path_back_tracking(str, flags, size));
 	}
+	else if ((*str)[stock] != 'E')
+		(*str)[stock] = '2';
 }
 
 void	check_path(char *str, t_flags flags, t_dimensions size)
 {
-	printf("%s\n", str);
-	printf("%c\n", str[flags.player]);
-	printf("%c\n", str[flags.player + size.width - 1]);
 	path_back_tracking(&str, flags, size);
-	printf("%s\n", str);
-	
 	if (no_collector(str, size) != 0)
 		error_parsing(str);
 }

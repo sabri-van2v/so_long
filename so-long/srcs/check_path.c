@@ -42,49 +42,27 @@ void	player_explores(char **str, t_flags *flags, t_dimensions size, char c)
 	}
 }
 
-int	exploration_continues(char *str, t_flags flags, t_dimensions size)
-{
-	if (str[flags.player - 1] == '0' || str[flags.player - 1] == 'C'
-		|| str[flags.player - 1] == 'N')
-		return (1);
-	if (str[flags.player + 1] == '0' || str[flags.player + 1] == 'C'
-		|| str[flags.player + 1] == 'N')
-		return (1);
-	if (str[flags.player + size.width + 1] == '0'
-		|| str[flags.player + size.width + 1] == 'C'
-			|| str[flags.player + size.width + 1] == 'N')
-		return (1);
-	if (str[flags.player - size.width - 1] == '0'
-		|| str[flags.player - size.width - 1] == 'C'
-			|| str[flags.player - size.width - 1] == 'N')
-		return (1);
-	return (0);
-}
-
 void	path_back_tracking(char **str, t_flags flags, t_dimensions size)
 {
 	int	stock;
 
-	if ((*str)[flags.player] == '1')
+	if ((*str)[flags.player] == '1' || (*str)[flags.player] == 'E')
 		return ;
 	stock = flags.player;
-	if (exploration_continues((*str), flags, size))
-	{
-		if ((*str)[stock - 1] == '0' || (*str)[stock - 1] == 'C' || (*str)[stock - 1] == 'N')
-			(player_explores(str, &flags, size, 'l'), path_back_tracking(str, flags, size));
-		flags.player = stock;
-		if ((*str)[stock + 1] == '0' || (*str)[stock + 1] == 'C' || (*str)[stock + 1] == 'N')
-			(player_explores(str, &flags, size, 'r'), path_back_tracking(str, flags, size));
-		flags.player = stock;
-		if ((*str)[stock + size.width + 1] == '0'
-			|| (*str)[stock + size.width + 1] == 'C' || (*str)[stock + size.width + 1] == 'N')
-			(player_explores(str, &flags, size, 'd'), path_back_tracking(str, flags, size));
-		flags.player = stock;
-		if ((*str)[stock - size.width - 1] == '0'
-			|| (*str)[stock - size.width - 1] == 'C' || (*str)[stock - size.width - 1] == 'N')
-			(player_explores(str, &flags, size, 'a'), path_back_tracking(str, flags, size));
-	}
-	else if ((*str)[stock] != 'E')
+	if ((*str)[stock - 1] == '0' || (*str)[stock - 1] == 'C' || (*str)[stock - 1] == 'N')
+		(player_explores(str, &flags, size, 'l'), path_back_tracking(str, flags, size));
+	flags.player = stock;
+	if ((*str)[stock + 1] == '0' || (*str)[stock + 1] == 'C' || (*str)[stock + 1] == 'N')
+		(player_explores(str, &flags, size, 'r'), path_back_tracking(str, flags, size));
+	flags.player = stock;
+	if ((*str)[stock + size.width + 1] == '0'
+		|| (*str)[stock + size.width + 1] == 'C' || (*str)[stock + size.width + 1] == 'N')
+		(player_explores(str, &flags, size, 'd'), path_back_tracking(str, flags, size));
+	flags.player = stock;
+	if ((*str)[stock - size.width - 1] == '0'
+		|| (*str)[stock - size.width - 1] == 'C' || (*str)[stock - size.width - 1] == 'N')
+		(player_explores(str, &flags, size, 'a'), path_back_tracking(str, flags, size));
+	if ((*str)[stock] != '2')
 		(*str)[stock] = '2';
 }
 

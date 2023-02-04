@@ -90,7 +90,13 @@ void	path_back_tracking(char **str, t_flags flags, t_dimensions size)
 
 void	check_path(char *str, t_flags flags, t_dimensions size)
 {
-	path_back_tracking(&str, flags, size);
-	if (no_collector(str, size) != 0)
+	char	*str_path;
+
+	str_path = ft_strdup(str);
+	if (!str_path)
 		error_parsing(str);
+	path_back_tracking(&str_path, flags, size);
+	if (no_collector(str_path, size) != 0)
+		(free(str_path), error_parsing(str));
+	free(str_path);
 }

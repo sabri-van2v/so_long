@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/04 06:25:46 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/04 08:04:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct s_dimensions
 	int	width;
 	int	height;
 }	t_dimensions;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*mlx_win;
+	void	**xpm;
+}	t_data;
 
 void	error_get_map(int fd, char *str1, char *str2);
 

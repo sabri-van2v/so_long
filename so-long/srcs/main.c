@@ -10,8 +10,7 @@ int	main(int argc, char **argv)
 		return (printf("Error\n"), 1);
 	str = get_map(argv[1]);
 	size = parsing(str);
-	(void)size;
-	//build_map(str, size);
+	build_map(str, size);
 	//hooks();
 	//delete();
 }

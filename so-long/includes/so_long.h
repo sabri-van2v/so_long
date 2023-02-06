@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/04 08:04:35 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:56:29 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_flags
 	int	player;
 	int	collector;
 	int	exit;
-	int rectangular;
+	int	rectangular;
 	int	walls;
 	int	path;
 }	t_flags;
@@ -39,14 +39,25 @@ typedef struct s_dimensions
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
-	void	**xpm;
+	void			*mlx_ptr;
+	void			*mlx_win;
+	void			**xpm;
+	t_dimensions	settings;
 }	t_data;
 
 void	error_get_map(int fd, char *str1, char *str2);
 
 void	error_parsing(char *str);
+
+void	error_build_game(char *str, t_data *data);
+
+void	good_xpm(char c, t_data data, int i, int j);
+
+void	build_map(char *str, t_data data);
+
+void	set_xpm(t_data *data);
+
+void	set_data(t_data *data, t_dimensions size);
 
 int	no_collector(char *str, t_dimensions size);
 

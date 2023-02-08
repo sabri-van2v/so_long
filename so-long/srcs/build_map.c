@@ -1,5 +1,14 @@
 #include "so_long.h"
 
+void	delete_str(char **str)
+{
+	char	*tmp;
+
+	tmp = *str;
+	*str = NULL;
+	free(tmp);
+}
+
 void	good_xpm(char c, t_data data, int x, int y)
 {
 	if (c == '0')
@@ -16,21 +25,7 @@ void	good_xpm(char c, t_data data, int x, int y)
 		mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.xpm[5], x * 64, y * 64);
 }
 
-char	*camera(char *str, t_data data)
-{
-	char	*modified_str;
-	int		i;
-
-	i = 0;
-	while (str[i] != 'E')
-		i++;
-	while (str[i])
-	if (data.settings.height == 1080)
-	{
-	}
-}
-
-void	build_map(char *str_full, t_data data)
+void	build_map(char **str_full, t_data data)
 {
 	int		i;
 	int		x;
@@ -40,10 +35,13 @@ void	build_map(char *str_full, t_data data)
 	i = -1;
 	x = 0;
 	y = 0;
-	if (data.settings.height == 1080 || data.settings.width == 1920)
-		str = camera(str_full, data);
+	str = NULL;
+	if (data.settings.height == 1024 || data.settings.width == 1920)
+		str = camera(*str_full, data);
 	else
-		str = str_full;
+		str = *str_full;
+	if (!str)
+		return (delete_str(str_full));
 	while (str[++i])
 	{
 		x = 0;
@@ -55,4 +53,7 @@ void	build_map(char *str_full, t_data data)
 		}
 		y++;
 	}
+	printf("je passe 2\n");
+	if (data.settings.height == 1024 || data.settings.width == 1920)
+		free(str);
 }

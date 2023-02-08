@@ -36,7 +36,7 @@ void	build_map(char **str_full, t_data data)
 	x = 0;
 	y = 0;
 	str = NULL;
-	if (data.settings.height == 1024 || data.settings.width == 1920)
+	if (data.settings.height == 960 || data.settings.width == 1856)
 		str = camera(*str_full, data);
 	else
 		str = *str_full;
@@ -53,7 +53,6 @@ void	build_map(char **str_full, t_data data)
 		}
 		y++;
 	}
-	printf("je passe 2\n");
-	if (data.settings.height == 1024 || data.settings.width == 1920)
+	if (data.settings.height == 960 || data.settings.width == 1856)
 		free(str);
 }

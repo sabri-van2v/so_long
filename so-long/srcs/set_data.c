@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:24:01 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/08 15:41:58 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/08 18:02:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	set_data(t_data *data, t_dimensions size)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;
-	if (size.height * 64 > 1024)
-		data->settings.height = 1024;
+	if (size.height * 64 > 960)
+		data->settings.height = 960;
 	else
 		data->settings.height = size.height * 64;
-	if (size.width * 64 > 1920)
-		data->settings.width = 1920;
+	if (size.width * 64 > 1856)
+		data->settings.width = 1856;
 	else
 		data->settings.width = size.width * 64;
 	data->xpm = malloc(sizeof(void *) * 7);

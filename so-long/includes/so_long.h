@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/09 17:17:28 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:32:34 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,9 @@ typedef struct s_data
 	void			*mlx_win;
 	void			**xpm;
 	t_dimensions	settings;
+	t_dimensions	player;
+	char			*str;
 }	t_data;
-
-typedef struct s_coordonees
-{
-	int	x;
-	int	y;
-	int	len;
-}	t_coordonees;
 
 void	error_get_map(int fd, char *str1, char *str2);
 
@@ -58,21 +53,21 @@ void	error_parsing(char *str);
 
 void	error_build_game(char *str, t_data *data);
 
-void	copy_str(char *str, char *modified_str, int first, t_coordonees start);
+void	up(char *str, t_data *data, int player);
 
-int	found_start_y(char *str);
+void	left(char *str, t_data *data, int player);
 
-int	found_start_x(char *str);
+void	down(char *str, t_data *data, int player);
 
-void	new_camera(char *str, char *modified_str);
+void	right(char *str, t_data *data, int player);
 
-char	*camera(char *str, t_data data);
+int		press(int key, t_data *data);
 
-void	delete_str(char **str);
+void	hooks(char *str, t_data *data);
 
-void	good_xpm(char c, t_data data, int i, int j);
+void	good_xpm(char c, t_data *data, int i, int j);
 
-void	build_map(char **str, t_data data);
+void	build_map(char *str, t_data *data);
 
 void	set_xpm(t_data *data);
 

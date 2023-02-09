@@ -1,4 +1,6 @@
-SRC = main.c get_map.c parsing.c check_path.c set_data.c build_map.c camera.c error.c
+SRC = 	main.c get_map.c parsing.c check_path.c \
+		set_data.c build_map.c hooks.c directions.c \
+		error.c
 
 SRCS = ${addprefix srcs/, ${SRC}}
 

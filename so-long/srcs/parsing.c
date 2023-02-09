@@ -86,6 +86,8 @@ t_dimensions	parsing(char *str)
 	if (flags.position != 1 || flags.exit != 1 || flags.collector < 1)
 		error_parsing(str);
 	check_form(str, &flags, &size);
+	if (size.height > 18 || size.width > 34)
+		error_parsing(str);
 	check_walls(str, &flags);
 	check_path(str, flags, size);
 	return (size);

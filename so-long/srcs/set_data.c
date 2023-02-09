@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:24:01 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:02:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/09 17:41:30 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,8 @@ void	set_data(t_data *data, t_dimensions size)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;
-	if (size.height * 64 > 960)
-		data->settings.height = 960;
-	else
-		data->settings.height = size.height * 64;
-	if (size.width * 64 > 1856)
-		data->settings.width = 1856;
-	else
-		data->settings.width = size.width * 64;
+	data->settings.height = size.height * 64;
+	data->settings.width = size.width * 64;
 	data->xpm = malloc(sizeof(void *) * 7);
 	if (!data->xpm)
 		return ;

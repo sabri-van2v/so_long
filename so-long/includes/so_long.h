@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/08 15:38:57 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/09 13:51:54 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ void	error_parsing(char *str);
 
 void	error_build_game(char *str, t_data *data);
 
-char	*new_str(char *str, char *modified_str, int size, int i);
+int		start_str(char *str, int count);
 
-int	numbers_of_lines(char *str, int *i);
-
-int	numbers_of_columns(char *str, int *i);
+void	new_str(char *str, char *modified_str, t_dimensions camera);
 
 char	*camera(char *str, t_data data);
 

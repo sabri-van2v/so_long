@@ -1,37 +1,81 @@
 #include "so_long.h"
 
-int	end(char *str, char *modified_str)
+int	line_after_player(char *str, int start)
 {
+	int	n;
 	int	i;
-	int	len;
-	int	count;
-	int	len_line;
 
+	n = 0;
 	i = 0;
-	len_line = 0;
-	count = 0;
-	len = ft_strlen(str);
-	while (str[len_line] != '\n' && str[len_line])
-		len_line++;
 	while (str[i] != 'P')
 		i++;
-	while (i < len && count < 7)
+	while (str[i])
 	{
-		i += len_line + 1;
-		count++;
+		if (str[i] == '\n')
+			n++;
+		i++;
 	}
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			n++;
+		i++;
+	}
+	if (str[i - 1] == '\n')
+		n--;
+	return (n);
 }
 
-int	start(char *str, char *modified_str)
-{}
+int	start_str(char *str, int count)
+{
+	int	i;
+	int	step;
 
-char	*new_str(char *str, char *modified_str, t_dimensions camera)
+	i = 0;
+	step = 0;
+	while (str[i] != 'P')
+		i++;
+	while (step < 15 && str[i] != '\n' && i > -1)
+	{
+		i--;
+		step++;
+	}
+	if (str[i] == '\n')
+		i++;
+	step = 0;
+	while (step < 8 && i - count - 1 > -1)
+	{
+		i -= count + 1;
+		step++;
+	}
+	if (step == 8 && i - count - 1 > -1)
+		i -= (count + 1) * line_after_player(str, i);
+	return (i);
+}
+
+void	new_str(char *str, char *modified_str, t_dimensions camera)
 {
 	int	start;
-	int	end;
+	int	i;
+	int	count;
 
-	start = start(str, modified_str);
-	end = end(str, modified_str);
+	i = 0;
+	count = 0;
+	while (str[count] != '\n')
+			count++;
+	start = start_str(str, count);
+	if (count > 29)
+	{
+		while (i < camera.height * (camera.width + 1))
+		{
+			ft_strlcpy(&modified_str[i], &str[start], 30);
+			start += count + 1;
+			i += 30;
+			modified_str[i - 1] = '\n';
+		}
+	}
+	else
+		ft_strlcpy(&modified_str[i], &str[start], 451);
 }
 
 char	*camera(char *str, t_data data)
@@ -51,5 +95,6 @@ char	*camera(char *str, t_data data)
 	if (!modified_str)
 		return (NULL);
 	new_str(str, modified_str, camera);
+	printf("%s\n", modified_str);
 	return (modified_str);
 }

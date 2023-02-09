@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	if (!data.mlx_win)
 		error_build_game(str, &data);
 	build_map(&str, data);
-	printf(" %s\n", str);
+	//printf(" %s\n", str);
 	if (!str)
 		error_build_game(NULL, &data);
 	mlx_loop(data.mlx_ptr);

@@ -1,81 +1,96 @@
 #include "so_long.h"
 
-int	line_after_player(char *str, int start)
+void	copy_str(char *str, char *modified_str, int first, t_coordonees start)
 {
-	int	n;
-	int	i;
+	int	write_x;
+	int	write_y;
+	int	max;
+	int	step_x;
 
-	n = 0;
-	i = 0;
-	while (str[i] != 'P')
-		i++;
-	while (str[i])
+	write_x = start.x;
+	write_y = start.y;
+	step_x = 0;
+	max = 29;
+	while (str[write_x++] != '\n')
+		step_x++;
+	if (step_x < 29)
+		max = step_x;
+	step_x = 0;
+	while (first < (int)ft_strlen(str) && write_y < 15)
 	{
-		if (str[i] == '\n')
-			n++;
-		i++;
-	}
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			n++;
-		i++;
-	}
-	if (str[i - 1] == '\n')
-		n--;
-	return (n);
-}
-
-int	start_str(char *str, int count)
-{
-	int	i;
-	int	step;
-
-	i = 0;
-	step = 0;
-	while (str[i] != 'P')
-		i++;
-	while (step < 15 && str[i] != '\n' && i > -1)
-	{
-		i--;
-		step++;
-	}
-	if (str[i] == '\n')
-		i++;
-	step = 0;
-	while (step < 8 && i - count - 1 > -1)
-	{
-		i -= count + 1;
-		step++;
-	}
-	if (step == 8 && i - count - 1 > -1)
-		i -= (count + 1) * line_after_player(str, i);
-	return (i);
-}
-
-void	new_str(char *str, char *modified_str, t_dimensions camera)
-{
-	int	start;
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[count] != '\n')
-			count++;
-	start = start_str(str, count);
-	if (count > 29)
-	{
-		while (i < camera.height * (camera.width + 1))
+		while (step_x < max)
 		{
-			ft_strlcpy(&modified_str[i], &str[start], 30);
-			start += count + 1;
-			i += 30;
-			modified_str[i - 1] = '\n';
+			modified_str[step_x] = str[first];
+			step_x++;
+			first++;
 		}
+		write_y++;
+		first += start.len + 1;
 	}
-	else
-		ft_strlcpy(&modified_str[i], &str[start], 451);
+	modified_str[first] = '\0';
+}
+
+int	found_start_y(char *str)
+{
+	int	y;
+	int	step;
+	int	len;
+	int	check;
+
+	y = 0;
+	step = 0;
+	len = 0;
+	while (str[y] != 'P')
+		y++;
+	check = y;
+	while (str[len] != '\n')
+		len++;
+	while (check < (int)ft_strlen(str))
+		check += len + 1;
+	while (8 - --check > 0)
+		step--;
+	while (y - len - 1 > -1 && ++step < 8)
+		y -= len + 1;
+	return (y);
+}
+
+int	found_start_x(char *str)
+{
+	int	x;
+	int	step;
+	int	len;
+	int	check;
+
+	x = 0;
+	step = 0;
+	len = 0;
+	while (str[x] != 'P')
+		x++;
+	check = x;
+	while (str[check] != '\n')
+		check++;
+	while (16 - --check > 0)
+		step--;
+	while (x - )
+	while (x - 1 > -1 && ++step < 8)
+		x--;
+	return (x);
+}
+
+void	new_camera(char *str, char *modified_str)
+{
+	t_coordonees	start;
+	int				first;
+
+	start.x = found_start_x(str);
+	start.y = found_start_y(str);
+	printf("x : %d\n", start.x);
+	printf("y : %d\n", start.y);
+	start.len = 0;
+	while (str[start.len] != '\n')
+		start.len++;
+	first = start.x + (start.y * start.len);
+	copy_str(str, modified_str, first, start);
 }
 
 char	*camera(char *str, t_data data)
@@ -94,7 +109,7 @@ char	*camera(char *str, t_data data)
 	modified_str = malloc(camera.width * (camera.height + 1));
 	if (!modified_str)
 		return (NULL);
-	new_str(str, modified_str, camera);
+	new_camera(str, modified_str);
 	printf("%s\n", modified_str);
 	return (modified_str);
 }

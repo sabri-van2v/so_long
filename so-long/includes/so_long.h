@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/09 13:51:54 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:17:28 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,26 @@ typedef struct s_data
 	t_dimensions	settings;
 }	t_data;
 
+typedef struct s_coordonees
+{
+	int	x;
+	int	y;
+	int	len;
+}	t_coordonees;
+
 void	error_get_map(int fd, char *str1, char *str2);
 
 void	error_parsing(char *str);
 
 void	error_build_game(char *str, t_data *data);
 
-int		start_str(char *str, int count);
+void	copy_str(char *str, char *modified_str, int first, t_coordonees start);
 
-void	new_str(char *str, char *modified_str, t_dimensions camera);
+int	found_start_y(char *str);
+
+int	found_start_x(char *str);
+
+void	new_camera(char *str, char *modified_str);
 
 char	*camera(char *str, t_data data);
 

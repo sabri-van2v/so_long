@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/09 19:32:34 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/10 00:02:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	error_parsing(char *str);
 
 void	error_build_game(char *str, t_data *data);
 
+void	delete_xpm(t_data *data);
+
+void	delete_all(char *str, t_data *data);
+
 void	up(char *str, t_data *data, int player);
 
 void	left(char *str, t_data *data, int player);
@@ -70,6 +74,8 @@ void	good_xpm(char c, t_data *data, int i, int j);
 void	build_map(char *str, t_data *data);
 
 void	set_xpm(t_data *data);
+
+void	set_data_2(t_data *data);
 
 void	set_data(t_data *data, t_dimensions size);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:24:01 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/09 17:41:30 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/09 23:24:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ void	set_xpm(t_data *data)
 	data->xpm[5] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/micro.xpm", &stock_height, &stock_width);
 	data->xpm[6] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/sprite.xpm", &stock_height, &stock_width);
 	check_xpm(data);
+}
+
+void	set_data_2(t_data *data)
+{
+	data->xpm = malloc(sizeof(void *) * 7);
+	if (!data->xpm)
+		return ;
+	set_xpm(data);
 }
 
 void	set_data(t_data *data, t_dimensions size)

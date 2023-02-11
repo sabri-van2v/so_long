@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/10 00:02:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/11 18:05:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_data
 	void			*mlx_win;
 	void			**xpm;
 	t_dimensions	settings;
-	t_dimensions	player;
 	char			*str;
 }	t_data;
 
@@ -57,6 +56,8 @@ void	delete_xpm(t_data *data);
 
 void	delete_all(char *str, t_data *data);
 
+int	collector_found(char *str);
+
 void	up(char *str, t_data *data, int player);
 
 void	left(char *str, t_data *data, int player);
@@ -64,6 +65,10 @@ void	left(char *str, t_data *data, int player);
 void	down(char *str, t_data *data, int player);
 
 void	right(char *str, t_data *data, int player);
+
+void	sprite(char *str, t_data *data);
+
+int	loop(t_data *data);
 
 int		press(int key, t_data *data);
 
@@ -75,7 +80,7 @@ void	build_map(char *str, t_data *data);
 
 void	set_xpm(t_data *data);
 
-void	set_data_2(t_data *data);
+void	refresh_data(t_data *data);
 
 void	set_data(t_data *data, t_dimensions size);
 

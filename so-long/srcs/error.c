@@ -7,7 +7,7 @@ void	error_get_map(int fd, char *str1, char *str2)
 		free(str1);
 	if (str2)
 		free(str2);
-	printf("Error m\n");
+	printf("Error\nIn getting the map\n");
 	exit(1);
 }
 
@@ -15,7 +15,7 @@ void	error_parsing(char *str)
 {
 	if (str)
 		free(str);
-	printf("Error p\n");
+	printf("Error\nIn reading the map\n");
 	exit(1);
 }
 
@@ -36,6 +36,6 @@ void	error_build_game(char *str, t_data *data)
 	}
 	if (data->mlx_ptr)
 		(mlx_destroy_display(data->mlx_ptr), free(data->mlx_ptr));
-	printf("Error b\n");
+	printf("Error\nFor build the game or the map\n");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:24:01 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/09 23:24:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/11 16:01:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	set_xpm(t_data *data)
 	check_xpm(data);
 }
 
-void	set_data_2(t_data *data)
+void	refresh_data(t_data *data)
 {
 	data->xpm = malloc(sizeof(void *) * 7);
 	if (!data->xpm)

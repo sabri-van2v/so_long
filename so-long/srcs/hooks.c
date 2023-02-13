@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 20:37:45 by svan-de-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:40:37 by svan-de-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	isnt_wall(char c)
@@ -9,7 +21,7 @@ int	isnt_wall(char c)
 
 void	sprite(char *str, t_data *data)
 {
-	int	i;
+	int			i;
 	static int	call = 0;
 
 	call++;
@@ -55,11 +67,13 @@ int	press(int key, t_data *data)
 		player++;
 	if (key == XK_Escape || key == 17)
 		(delete_all(data->str, data), exit(0));
-	if ((key == XK_w || key == XK_W) && isnt_wall(data->str[player - (data->settings.width / 64) - 1]))
+	if ((key == XK_w || key == XK_W)
+		&& isnt_wall(data->str[player - (data->settings.width / 64) - 1]))
 		return (up(data->str, data, player), 1);
 	if ((key == XK_a || key == XK_A) && isnt_wall(data->str[player - 1]))
 		return (left(data->str, data, player), 1);
-	if ((key == XK_s || key == XK_S) && isnt_wall(data->str[player + (data->settings.width / 64) + 1]))
+	if ((key == XK_s || key == XK_S)
+		&& isnt_wall(data->str[player + (data->settings.width / 64) + 1]))
 		return (down(data->str, data, player), 1);
 	if ((key == XK_d || key == XK_D) && isnt_wall(data->str[player + 1]))
 		return (right(data->str, data, player), 1);

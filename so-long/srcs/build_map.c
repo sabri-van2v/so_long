@@ -1,21 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   build_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 20:33:21 by svan-de-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:33:21 by svan-de-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	good_xpm(char c, t_data *data, int x, int y)
 {
 	if (c == '0')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[0], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[0], x * 64, y * 64);
 	if (c == '1')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[1], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[1], x * 64, y * 64);
 	if (c == 'P')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[2], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[2], x * 64, y * 64);
 	if (c == 'C')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[3], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[3], x * 64, y * 64);
 	if (c == 'E')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[4], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[4], x * 64, y * 64);
 	if (c == 'N')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[5], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[5], x * 64, y * 64);
 	if (c == '2')
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->xpm[6], x * 64, y * 64);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->mlx_win, data->xpm[6], x * 64, y * 64);
 }
 
 void	build_map(char *str, t_data *data)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 20:35:33 by svan-de-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:35:33 by svan-de-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	no_collector(char *str, t_dimensions size)
@@ -11,7 +23,8 @@ int	no_collector(char *str, t_dimensions size)
 			return (1);
 		if (str[i] == 'E')
 			if (str[i + 1] != '2' && str[i - 1] != '2'
-				&& str[i + size.width + 1] != 2 && str[i + size.width - 1] != '2')
+				&& str[i + size.width + 1] != 2
+				&& str[i + size.width - 1] != '2')
 				return (1);
 		i++;
 	}
@@ -42,7 +55,7 @@ void	player_explores(char *str, t_flags *flags, t_dimensions size, char c)
 	}
 }
 
-void	path_back_tracking(char *str, t_flags flags, t_dimensions size)
+void	tracking(char *str, t_flags flags, t_dimensions size)
 {
 	int	stock;
 
@@ -50,18 +63,20 @@ void	path_back_tracking(char *str, t_flags flags, t_dimensions size)
 		return ;
 	stock = flags.player;
 	if (str[stock - 1] == '0' || str[stock - 1] == 'C' || str[stock - 1] == 'N')
-		(player_explores(str, &flags, size, 'l'), path_back_tracking(str, flags, size));
+		(player_explores(str, &flags, size, 'l'), tracking(str, flags, size));
 	flags.player = stock;
 	if (str[stock + 1] == '0' || str[stock + 1] == 'C' || str[stock + 1] == 'N')
-		(player_explores(str, &flags, size, 'r'), path_back_tracking(str, flags, size));
+		(player_explores(str, &flags, size, 'r'), tracking(str, flags, size));
 	flags.player = stock;
 	if (str[stock + size.width + 1] == '0'
-		|| str[stock + size.width + 1] == 'C' || str[stock + size.width + 1] == 'N')
-		(player_explores(str, &flags, size, 'd'), path_back_tracking(str, flags, size));
+		|| str[stock + size.width + 1] == 'C'
+		|| str[stock + size.width + 1] == 'N')
+		(player_explores(str, &flags, size, 'd'), tracking(str, flags, size));
 	flags.player = stock;
 	if (str[stock - size.width - 1] == '0'
-		|| str[stock - size.width - 1] == 'C' || str[stock - size.width - 1] == 'N')
-		(player_explores(str, &flags, size, 'a'), path_back_tracking(str, flags, size));
+		|| str[stock - size.width - 1] == 'C'
+		|| str[stock - size.width - 1] == 'N')
+		(player_explores(str, &flags, size, 'a'), tracking(str, flags, size));
 	if (str[stock] != '2')
 		str[stock] = '2';
 }
@@ -73,7 +88,7 @@ void	check_path(char *str, t_flags flags, t_dimensions size)
 	str_path = ft_strdup(str);
 	if (!str_path)
 		error_parsing(str);
-	path_back_tracking(str_path, flags, size);
+	tracking(str_path, flags, size);
 	if (no_collector(str_path, size) != 0)
 		(free(str_path), error_parsing(str));
 	free(str_path);

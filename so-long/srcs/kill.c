@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int    cross_kill(t_data *data)
+int	cross_kill(t_data *data)
 {
 	delete_all(data->str, data);
 	exit(0);

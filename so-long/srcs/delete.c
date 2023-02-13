@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 20:35:43 by svan-de-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:35:43 by svan-de-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	delete_xpm(t_data *data)
@@ -13,7 +25,7 @@ void	delete_xpm(t_data *data)
 	}
 }
 
-void    delete_all(char *str, t_data *data)
+void	delete_all(char *str, t_data *data)
 {
 	if (str)
 		free(str);

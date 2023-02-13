@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 20:18:37 by svan-de-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:18:37 by svan-de-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	error_get_map(int fd, char *str1, char *str2)
@@ -7,7 +19,7 @@ void	error_get_map(int fd, char *str1, char *str2)
 		free(str1);
 	if (str2)
 		free(str2);
-	printf("Error\nIn getting the map\n");
+	ft_printf("Error\nIn getting the map\n");
 	exit(1);
 }
 
@@ -15,7 +27,7 @@ void	error_parsing(char *str)
 {
 	if (str)
 		free(str);
-	printf("Error\nIn reading the map\n");
+	ft_printf("Error\nIn reading the map\n");
 	exit(1);
 }
 
@@ -36,6 +48,6 @@ void	error_build_game(char *str, t_data *data)
 	}
 	if (data->mlx_ptr)
 		(mlx_destroy_display(data->mlx_ptr), free(data->mlx_ptr));
-	printf("Error\nFor build the game or the map\n");
+	ft_printf("Error\nFor build the game or the map\n");
 	exit(1);
 }

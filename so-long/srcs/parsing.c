@@ -82,7 +82,6 @@ t_dimensions	parsing(char *str)
 	t_dimensions	size;
 
 	size.height = 0;
-	
 	check_chars(str, &flags);
 	if (flags.position != 1 || flags.exit != 1 || flags.collector < 1)
 		error_parsing(str);

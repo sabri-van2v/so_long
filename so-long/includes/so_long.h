@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/11 18:05:17 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/13 17:01:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,13 @@ void	error_parsing(char *str);
 
 void	error_build_game(char *str, t_data *data);
 
+int	cross_kill(t_data *data);
+
 void	delete_xpm(t_data *data);
 
 void	delete_all(char *str, t_data *data);
+
+void    put_steps(t_data *data, char c);
 
 int	collector_found(char *str);
 

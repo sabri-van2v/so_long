@@ -40,4 +40,5 @@ void	build_map(char *str, t_data *data)
 			return ;
 		y++;
 	}
+	put_steps(data, ' ');
 }

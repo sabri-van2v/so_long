@@ -8,7 +8,7 @@ int	main(int argc, char **argv)
 
 	str = NULL;
 	if (argc != 2)
-		return (ft_printf("Error\n"), 1);
+		return (ft_printf("Error\nThere is not only 1 argument\n"), 1);
 	str = get_map(argv[1]);
 	size = parsing(str);
 	set_data(&data, size);

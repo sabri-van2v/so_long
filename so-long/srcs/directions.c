@@ -14,9 +14,9 @@ int	collector_found(char *str)
 void	up(char *str, t_data *data, int player)
 {
 	if (str[player - (data->settings.width / 64) - 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY\n"), delete_all(str, data), exit(0));
+		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
 	if (str[player - (data->settings.width / 64) - 1] == 'N')
-		(ft_printf("DEFEAT\n"), delete_all(str, data), exit(0));
+		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
 	if (str[player - (data->settings.width / 64) - 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -26,14 +26,15 @@ void	up(char *str, t_data *data, int player)
 	if (!data->xpm)
 		error_build_game(str, data);
 	build_map(data->str, data);
+	put_steps(data, '+');
 }
 
 void	left(char *str, t_data *data, int player)
 {
 	if (str[player - 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY\n"), delete_all(str, data), exit(0));
+		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
 	if (str[player - 1] == 'N')
-		(ft_printf("DEFEAT\n"), delete_all(str, data), exit(0));
+		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
 	if (str[player - 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -43,14 +44,15 @@ void	left(char *str, t_data *data, int player)
 	if (!data->xpm)
 		error_build_game(str, data);
 	build_map(data->str, data);
+	put_steps(data, '+');
 }
 
 void	down(char *str, t_data *data, int player)
 {
 	if (str[player + (data->settings.width / 64) + 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY\n"), delete_all(str, data), exit(0));
+		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
 	if (str[player + (data->settings.width / 64) + 1] == 'N')
-		(ft_printf("DEFEAT\n"), delete_all(str, data), exit(0));
+		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
 	if (str[player + (data->settings.width / 64) + 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -60,14 +62,15 @@ void	down(char *str, t_data *data, int player)
 	if (!data->xpm)
 		error_build_game(str, data);
 	build_map(data->str, data);
+	put_steps(data, '+');
 }
 
 void	right(char *str, t_data *data, int player)
 {
 	if (str[player + 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY\n"), delete_all(str, data), exit(0));
+		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
 	if (str[player + 1] == 'N')
-		(ft_printf("DEFEAT\n"), delete_all(str, data), exit(0));
+		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
 	if (str[player + 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -77,4 +80,5 @@ void	right(char *str, t_data *data, int player)
 	if (!data->xpm)
 		error_build_game(str, data);
 	build_map(data->str, data);
+	put_steps(data, '+');
 }

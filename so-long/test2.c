@@ -86,6 +86,12 @@ int	release(int key, t_data *data)
 
 int	press(int key, t_data *data)
 {
+	int	x;
+	int y;
+
+	x = 128;
+	y = 128;
+	mlx_get_screen_size(data->mlx_ptr, &x, &y);
 	printf("key press : %d\n", key);
 	return (0);
 }

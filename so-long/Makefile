@@ -1,6 +1,6 @@
 SRC = 	main.c get_map.c parsing.c check_path.c \
 		set_data.c build_map.c hooks.c directions.c \
-		delete.c error.c
+		delete.c put_steps.c kill.c error.c
 
 SRCS = ${addprefix srcs/, ${SRC}}
 

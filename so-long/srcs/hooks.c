@@ -53,7 +53,7 @@ int	press(int key, t_data *data)
 	player = 0;
 	while (data->str[player] != 'P')
 		player++;
-	if (key == XK_Escape)
+	if (key == XK_Escape || key == 17)
 		(delete_all(data->str, data), exit(0));
 	if ((key == XK_w || key == XK_W) && isnt_wall(data->str[player - (data->settings.width / 64) - 1]))
 		return (up(data->str, data, player), 1);
@@ -70,5 +70,6 @@ void	hooks(char *str, t_data *data)
 {
 	data->str = str;
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, &press, data);
+	mlx_hook(data->mlx_win, 17, (1L << 17), &cross_kill, data);
 	mlx_loop_hook(data->mlx_ptr, &loop, data);
 }

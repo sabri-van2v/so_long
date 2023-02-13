@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 01:13:17 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/02/13 22:16:49 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/02/13 23:26:27 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void			check_form(char *str, t_flags *flags, t_dimensions *size);
 void			check_chars(char *str, t_flags *flags);
 
 t_dimensions	parsing(char *str);
+
+void			check_leak(char *reader, char *tmp);
 
 char			*read_map(int fd, char *str);
 

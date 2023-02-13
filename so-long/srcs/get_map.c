@@ -12,6 +12,15 @@
 
 #include "so_long.h"
 
+void	check_leak(char *reader, char *tmp)
+{
+	static int	flag = 0;
+
+	flag++;
+	if ((!reader || reader[0] == '\n') && tmp[0] == '\0' && flag == 1)
+		free(tmp);
+}
+
 char	*read_map(int fd, char *str)
 {
 	char	*tmp;
@@ -27,6 +36,7 @@ char	*read_map(int fd, char *str)
 	{
 		free(reader);
 		reader = get_next_line(fd);
+		check_leak(reader, tmp);
 		if (!reader || reader[0] == '\n')
 			break ;
 		str = ft_strjoin(tmp, reader);

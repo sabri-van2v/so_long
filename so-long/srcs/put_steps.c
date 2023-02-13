@@ -6,7 +6,10 @@ void    put_steps(t_data *data, char c)
 	char		*str;
 
 	if (c == '+')
+	{
 		step++;
+		ft_printf("%d\n", step);
+	}
 	str = ft_itoa(step);
 	mlx_string_put(data->mlx_ptr, data->mlx_win, 64, 64, 0, str);
 	free(str);

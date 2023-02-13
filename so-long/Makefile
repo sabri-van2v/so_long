@@ -31,6 +31,8 @@ ${NAME} : ${OBJS}
 
 all : ${NAME}
 
+bonus : all
+
 binaries :
 	@mkdir -p binaries/
 

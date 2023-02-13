@@ -14,9 +14,9 @@ int	collector_found(char *str)
 void	up(char *str, t_data *data, int player)
 {
 	if (str[player - (data->settings.width / 64) - 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("VICTORY - Bastien can talk\n"), delete_all(str, data), exit(0));
 	if (str[player - (data->settings.width / 64) - 1] == 'N')
-		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("DEFEAT - Bastien is mute\n"), delete_all(str, data), exit(0));
 	if (str[player - (data->settings.width / 64) - 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -32,9 +32,9 @@ void	up(char *str, t_data *data, int player)
 void	left(char *str, t_data *data, int player)
 {
 	if (str[player - 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("VICTORY - Bastien can talk\n"), delete_all(str, data), exit(0));
 	if (str[player - 1] == 'N')
-		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("DEFEAT - Bastien is mute\n"), delete_all(str, data), exit(0));
 	if (str[player - 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -50,9 +50,9 @@ void	left(char *str, t_data *data, int player)
 void	down(char *str, t_data *data, int player)
 {
 	if (str[player + (data->settings.width / 64) + 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("VICTORY - Bastien can talk\n"), delete_all(str, data), exit(0));
 	if (str[player + (data->settings.width / 64) + 1] == 'N')
-		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("DEFEAT - Bastien is mute\n"), delete_all(str, data), exit(0));
 	if (str[player + (data->settings.width / 64) + 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
@@ -68,9 +68,9 @@ void	down(char *str, t_data *data, int player)
 void	right(char *str, t_data *data, int player)
 {
 	if (str[player + 1] == 'E' && !collector_found(str))
-		(ft_printf("VICTORY - Bastien peut parler\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("VICTORY - Bastien can talk\n"), delete_all(str, data), exit(0));
 	if (str[player + 1] == 'N')
-		(ft_printf("DEFEAT - Bastien est mute\n"), delete_all(str, data), exit(0));
+		(put_steps(data, '+'), ft_printf("DEFEAT - Bastien is mute\n"), delete_all(str, data), exit(0));
 	if (str[player + 1] == 'E' && collector_found(str))
 		return ;
 	str[player] = '0';
